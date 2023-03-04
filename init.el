@@ -70,6 +70,9 @@
 (setq gc-cons-threshold 8589934592)
 (run-with-idle-timer 300 t 'garbage-collect)
 
+;;; Don't show the warnings buffer unless there's an actual error
+(setq display-warning-minimum-level :error)
+
 ;; Initialize the package manager
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
