@@ -96,17 +96,17 @@
 (use-package projectile
   :ensure t
   :after (ivy)
-  :bind ("C-c p" . projectile-command-map)
+  :bind-keymap ("C-c p" . projectile-command-map)
   :config
   (projectile-mode 1)
   (counsel-projectile-mode 1))
 
 (use-package org
   :ensure t
-  :bind (("C-c >" . org-metaright)
-         ("C-c <" . org-metaleft)
-         ("C-c v" . org-metadown)
-         ("C-c M-v". org-metaup))
+  :bind-keymap (("C-c >" . org-metaright)
+                ("C-c <" . org-metaleft)
+                ("C-c v" . org-metadown)
+                ("C-c M-v". org-metaup))
   :config
   (setq org-startup-truncated nil)
   (setq org-startup-indented nil)
