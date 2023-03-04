@@ -1,0 +1,5 @@
+#+TITLE: Quanticle's Emacs Config
+
+This is my =init.el=. There are many like it, but this one is mine.
+
+The goal with this =init.el= is to be able to drop a single file into an empty =~/.emacs.d/= and have a fully functional emacs install thereafter. To this end, I make use of [[https://github.com/jwiegley/use-package][=use-package=]] to download and configure packages.
