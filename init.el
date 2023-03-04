@@ -160,5 +160,3 @@
   :ensure t
   :config
   (load-theme 'vscode-dark-plus t))
-
-
