@@ -98,7 +98,12 @@
   :after (ivy)
   :bind-keymap ("C-c p" . projectile-command-map)
   :config
-  (projectile-mode 1)
+  (projectile-mode 1))
+
+(use-package counsel-projectile
+  :ensure t
+  :after (projectile)
+  :config
   (counsel-projectile-mode 1))
 
 (use-package org
