@@ -98,6 +98,7 @@
   :after (ivy)
   :bind-keymap ("C-c p" . projectile-command-map)
   :config
+  (setq projectile-enable-caching t)
   (projectile-mode 1))
 
 (use-package counsel-projectile
@@ -108,10 +109,11 @@
 
 (use-package org
   :ensure t
-  :bind-keymap (("C-c >" . org-metaright)
-                ("C-c <" . org-metaleft)
-                ("C-c v" . org-metadown)
-                ("C-c M-v". org-metaup))
+  :bind (:map org-mode-map
+         ("C-c >" . org-metaright)
+         ("C-c <" . org-metaleft)
+         ("C-c v" . org-metadown)
+         ("C-c M-v". org-metaup))
   :config
   (setq org-startup-truncated nil)
   (setq org-startup-indented nil)
