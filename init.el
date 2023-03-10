@@ -7,6 +7,12 @@
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "C-x C-z"))
 
+;;; Ubind C-t (transpose characters). I have almost never intentionally used
+;;; function, but I hit C-t accidentally all the time when reaching for C-r
+;;; (reverse i-search)
+
+(global-unset-key (kbd  "C-t"))
+
 ;;; I shouldn't have to set this, but Emacs is archaic and will use some random
 ;;; ASCII or Windows-1252 codepage if this isn't set
 (prefer-coding-system 'utf-8)
