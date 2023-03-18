@@ -79,6 +79,10 @@
 ;;; Don't show the warnings buffer unless there's an actual error
 (setq display-warning-minimum-level :error)
 
+
+;; Set Javascript indentation to two spaces
+(setq js-indent-level 2)
+
 ;; Initialize the package manager
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -119,7 +123,9 @@
          ("C-c >" . org-metaright)
          ("C-c <" . org-metaleft)
          ("C-c v" . org-metadown)
-         ("C-c M-v". org-metaup))
+         ("C-c M-v" . org-metaup)
+         ("C-c ," . org-insert-structure-template)
+         ("<insert>" . org-insert-structure-template))
   :config
   (setq org-startup-truncated nil)
   (setq org-startup-indented nil)
