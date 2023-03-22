@@ -83,6 +83,10 @@
 ;; Set Javascript indentation to two spaces
 (setq js-indent-level 2)
 
+;; Enable emacs to handle encrypted files
+(require 'epa-file)
+(epa-file-enable)
+
 ;; Initialize the package manager
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -125,7 +129,10 @@
          ("C-c v" . org-metadown)
          ("C-c M-v" . org-metaup)
          ("C-c ," . org-insert-structure-template)
-         ("<insert>" . org-insert-structure-template))
+         ("<insert>" . org-insert-structure-template)
+         ("C-c C-'" . org-edit-special))
+        (:map org-src-mode-map
+         ("C-c C-'" . org-edit-src-exit))
   :config
   (setq org-startup-truncated nil)
   (setq org-startup-indented nil)
