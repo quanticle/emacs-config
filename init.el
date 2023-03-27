@@ -87,6 +87,10 @@
 (require 'epa-file)
 (epa-file-enable)
 
+;; I don't like list-directory, so let's just use dired for both C-x C-d and
+;; C-x d
+(global-set-key (kbd "C-x C-d") 'dired)
+
 ;; Initialize the package manager
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
