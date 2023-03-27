@@ -91,6 +91,14 @@
 ;; C-x d
 (global-set-key (kbd "C-x C-d") 'dired)
 
+;; I hit C-x C-c accidentally far too often for my liking, so add a confirmation
+;; for that
+
+(global-set-key (kbd "C-x C-c") (lambda ()
+                                  (interactive)
+                                  (if (y-or-n-p "Really quit?")
+                                      (save-buffers-kill-terminal))))
+
 ;; Initialize the package manager
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
