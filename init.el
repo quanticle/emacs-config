@@ -210,7 +210,6 @@
   (add-hook 'emacs-lisp-mode-hook #'evil-paredit-mode)
   (add-hook 'cider-mode-hook #'evil-paredit-mode))
 
-
 (use-package lsp-mode
   :ensure t)
 
