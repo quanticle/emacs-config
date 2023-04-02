@@ -99,6 +99,9 @@
                                   (if (y-or-n-p "Really quit?")
                                       (save-buffers-kill-terminal))))
 
+;; I don't double-space after periods
+(setq sentence-end-double-space nil)
+
 ;; Initialize the package manager
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -179,6 +182,34 @@
   :config
   (add-hook 'cider-mode-hook #'enable-paredit-mode)
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode))
+
+(use-package evil
+  :ensure t
+  :bind (:map evil-motion-state-map
+         ("j" . next-line)
+         ("k" . previous-line))
+  :config
+  (evil-mode 1))
+
+(use-package evil-org
+  :ensure t
+  :after (evil)
+  :config
+  (add-hook 'org-mode-hook #'evil-org-mode))
+
+(use-package evil-collection
+  :ensure t
+  :after (evil)
+  :config
+  (evil-collection-init))
+
+(use-package evil-paredit
+  :ensure t
+  :after (evil)
+  :config
+  (add-hook 'emacs-lisp-mode-hook #'evil-paredit-mode)
+  (add-hook 'cider-mode-hook #'evil-paredit-mode))
+
 
 (use-package lsp-mode
   :ensure t)
