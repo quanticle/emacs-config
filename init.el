@@ -103,7 +103,7 @@
 (setq sentence-end-double-space nil)
 
 ;; Display the time in the mode line
-(setq display-time-format "%l:%M %p %Y-%m-%d")
+(setq display-time-format "%l:%M %p %a %Y-%m-%d")
 
 (setq display-time-string-forms
       '(#1= ""
