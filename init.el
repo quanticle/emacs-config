@@ -112,6 +112,12 @@
                         (format-time-string "%a %b %e, %Y" now))))
 (display-time-mode 1)
 
+;; Command to allow me to rename frames
+(defun rename-frame ()
+  (interactive)
+  (let ((current-frame (selected-frame))
+        (new-frame-name (read-string "New frame name: ")))
+    (modify-frame-parameters current-frame (list (cons 'name new-frame-name)))))
 
 
 ;; Initialize the package manager
