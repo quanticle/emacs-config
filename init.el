@@ -167,6 +167,7 @@
   (setq org-startup-export-with-toc nil)
   (setq org-adapt-indentation nil)
   (setq org-yank-folded-subtrees nil)
+  (setq org-export-with-toc nil)
   (add-hook 'org-mode-hook
             (lambda ()
               (electric-indent-mode -1))))
