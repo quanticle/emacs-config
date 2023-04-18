@@ -102,16 +102,6 @@
 ;; I don't double-space after periods
 (setq sentence-end-double-space nil)
 
-;; Display the time in the mode line
-(setq display-time-format "%l:%M %p %a %Y-%m-%d")
-
-(setq display-time-string-forms
-      '(#1= ""
-            (propertize (format-time-string display-time-format now)
-                        'help-echo
-                        (format-time-string "%a %b %e, %Y" now))))
-(display-time-mode 1)
-
 ;; Command to allow me to rename frames
 (defun rename-frame ()
   (interactive)
@@ -210,6 +200,9 @@
   :after (lsp-mode)
   :config
   (add-hook 'js-mode-hook #'lsp))
+
+(use-package csv-mode
+  :ensure t)
 
 (use-package vscode-dark-plus-theme
   :ensure t
