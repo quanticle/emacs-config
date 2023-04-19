@@ -192,12 +192,23 @@
   (add-hook 'cider-mode-hook #'enable-paredit-mode)
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode))
 
+(use-package undo-tree
+  :ensure t
+  :demand
+  :init
+  (setq undo-tree-auto-save-history nil)
+  :config
+  (global-undo-tree-mode))
+
 (use-package evil
   :ensure t
   :demand
+  :init
+  (setq evil-undo-system 'undo-tree)
+  :after (undo-tree)
   :bind (:map evil-motion-state-map
-         ("j" . next-line)
-         ("k" . previous-line))
+              ("j" . next-line)
+              ("k" . previous-line))
   :config
   (evil-mode 1))
 
