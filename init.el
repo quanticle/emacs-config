@@ -191,65 +191,6 @@
   (add-hook 'cider-mode-hook #'enable-paredit-mode)
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode))
 
-(use-package undo-tree
-  :ensure t
-  :demand
-  :init
-  (setq undo-tree-auto-save-history nil)
-  :config
-  (global-undo-tree-mode))
-
-(use-package evil
-  :ensure t
-  :demand
-  :init
-  (setq evil-undo-system 'undo-tree)
-  :after (undo-tree)
-  :bind (:map evil-motion-state-map
-              ("j" . next-line)
-              ("k" . previous-line))
-  :config
-  (evil-mode 1)
-  (evil-set-leader 'normal (kbd "SPC"))
-  (evil-define-key
-    'normal
-    'global
-    (kbd "<leader>o")
-    (lambda ()
-      (interactive)
-      (evil-insert-newline-below))))
-
-
-(use-package evil-org
-  :ensure t
-  :after (evil)
-  :config
-  (add-hook 'org-mode-hook #'evil-org-mode)
-  (evil-define-key
-    'normal
-    'global
-    (kbd "<leader>o")
-    (lambda ()
-      (interactive)
-      (cond ((and (memq 'table-row evil-org-special-o/O) (org-at-table-p))
-             (org-table-insert-row '(4)))
-            ((and (memq 'item evil-org-special-o/O) (org-at-item-p))
-             (progn (end-of-visible-line)
-                    (org-insert-item (org-at-item-checkbox-p))))))))
-
-(use-package evil-collection
-  :ensure t
-  :after (evil)
-  :config
-  (evil-collection-init))
-
-(use-package evil-paredit
-  :ensure t
-  :after (evil)
-  :config
-  (add-hook 'emacs-lisp-mode-hook #'evil-paredit-mode)
-  (add-hook 'cider-mode-hook #'evil-paredit-mode))
-
 (use-package lsp-mode
   :ensure t)
 
