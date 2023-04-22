@@ -109,16 +109,6 @@
         (new-frame-name (read-string "New frame name: ")))
     (modify-frame-parameters current-frame (list (cons 'name new-frame-name)))))
 
-;; Display the time in the mode line
-(setq display-time-format "%l:%M %p %a %Y-%m-%d")
-
-(setq display-time-string-forms
-      '(#1= ""
-            (propertize (format-time-string display-time-format now)
-                        'help-echo
-                        (format-time-string "%a %b %e, %Y" now))))
-(display-time-mode 1)
-
 ;; Initialize the package manager
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
