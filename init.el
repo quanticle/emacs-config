@@ -129,20 +129,6 @@
   (setq ivy-count-format "(%d / %d) ")
   (setq enable-recursive-minibuffers t))
 
-(use-package projectile
-  :ensure t
-  :after (ivy)
-  :bind-keymap ("C-c p" . projectile-command-map)
-  :config
-  (setq projectile-enable-caching t)
-  (projectile-mode 1))
-
-(use-package counsel-projectile
-  :ensure t
-  :after (projectile)
-  :config
-  (counsel-projectile-mode 1))
-
 (use-package org
   :ensure t
   :bind (:map org-mode-map
