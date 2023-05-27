@@ -149,6 +149,7 @@
   (setq org-adapt-indentation nil)
   (setq org-yank-folded-subtrees nil)
   (setq org-export-with-toc nil)
+  (setq org-image-actual-width '(512))
   (add-hook 'org-mode-hook
             (lambda ()
               (electric-indent-mode -1))))
@@ -185,6 +186,12 @@
   :after (lsp-mode)
   :config
   (add-hook 'js-mode-hook #'lsp))
+
+(use-package slime
+  :ensure t
+  :config
+  (add-to-list 'slime-contribs 'slime-repl)
+  (setq inferior-lisp-program "/usr/bin/sbcl"))
 
 (use-package csv-mode
   :ensure t)
