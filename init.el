@@ -70,7 +70,7 @@
 (setq dired-clean-up-buffers-too t)
 
 ;;; Computers have lots of RAM these days, so emacs should be more relaxed about
-;;; garbage collection. This sets the GC to run when either 1. 8GB of lisp 
+;;; garbage collection. This sets the GC to run when either 1. 8GB of lisp
 ;;; objects have been allocated since the last GC or 2. emacs has been idle for
 ;;; five minutes.
 (setq gc-cons-threshold 8589934592)
@@ -109,6 +109,10 @@
         (new-frame-name (read-string "New frame name: ")))
     (modify-frame-parameters current-frame (list (cons 'name new-frame-name)))))
 
+;; Enable upcase-region and downcase-region
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
 ;; Initialize the package manager
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -143,6 +147,15 @@
   :config
   (counsel-projectile-mode 1))
 
+(use-package flyspell-correct
+  :ensure t
+  :bind (:map flyspell-mode-map
+              ("C-;" . flyspell-correct-wrapper)
+              ("C-c $" . flyspell-correct-at-point)))
+
+(use-package flyspell-correct-ivy
+  :ensure t)
+
 (use-package org
   :ensure t
   :bind (:map org-mode-map
@@ -164,33 +177,54 @@
   (setq org-yank-folded-subtrees nil)
   (setq org-export-with-toc nil)
   (setq org-image-actual-width '(512))
-  (add-hook 'org-mode-hook
-            (lambda ()
-              (electric-indent-mode -1))))
+  :hook (org-mode . (lambda ()
+                      (electric-indent-mode -1)
+                      (turn-on-flyspell))))
 
 (use-package magit
   :ensure t
   :config
   (setq vc-handled-backends nil))
 
+(use-package slime
+  :ensure t
+  :config
+  (add-to-list 'slime-contribs 'slime-repl)
+  (add-to-list 'slime-contribs 'slime-quicklisp)
+  (add-to-list 'slime-contribs 'slime-mdot-fu)
+  (setq inferior-lisp-program "/usr/bin/sbcl"))
+
 (use-package cider
   :ensure t
   :config
   (add-hook 'clojure-mode-hook 'cider-mode))
 
-(use-package company
+(use-package clj-refactor
   :ensure t
   :after (cider)
+  :hook (clojure-mode . (lambda ()
+                          (clj-refactor-mode 1)
+                          (cljr-add-keybindings-with-prefix "C-c C-m"))))
+
+(use-package company
+  :ensure t
+  :hook ((cider-mode . company-mode)
+         (emacs-lisp-mode . company-mode)
+         (lisp-mode . company-mode)))
+
+(use-package slime-company
+  :ensure t
   :config
-  (add-hook 'cider-mode-hook #'company-mode)
-  (add-hook 'emacs-lisp-mode-hook #'company-mode))
+  (setq slime-company-completion 'fuzzy
+        slime-company-after-completion 'slime-company-just-one-space)
+  (add-to-list 'slime-contribs 'slime-company))
 
 (use-package paredit
   :ensure t
-  :after (cider)
   :config
   (add-hook 'cider-mode-hook #'enable-paredit-mode)
-  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode))
+  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+  (add-hook 'lisp-mode-hook #'enable-paredit-mode))
 
 (use-package lsp-mode
   :ensure t)
@@ -201,14 +235,26 @@
   :config
   (add-hook 'js-mode-hook #'lsp))
 
-(use-package slime
+
+(use-package ace-window
   :ensure t
   :config
-  (add-to-list 'slime-contribs 'slime-repl)
-  (setq inferior-lisp-program "/usr/bin/sbcl"))
+  (global-set-key (kbd "C-x o") 'ace-window)
+  (global-set-key (kbd "M-o") 'ace-window))
 
 (use-package csv-mode
   :ensure t)
+
+(use-package go-mode
+  :ensure t
+  :config
+  (add-hook 'go-mode-hook 'lsp-deferred))
+
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp-deferred))))
 
 (use-package vscode-dark-plus-theme
   :ensure t
