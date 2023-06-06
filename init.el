@@ -186,13 +186,10 @@
   :config
   (setq vc-handled-backends nil))
 
-(use-package slime
+(use-package sly
   :ensure t
-  :config
-  (add-to-list 'slime-contribs 'slime-repl)
-  (add-to-list 'slime-contribs 'slime-quicklisp)
-  (add-to-list 'slime-contribs 'slime-mdot-fu)
-  (setq inferior-lisp-program "/usr/bin/sbcl"))
+  :custom-face
+  (sly-mrepl-output-face ((t (:foreground "SeaGreen")))))
 
 (use-package cider
   :ensure t
@@ -210,14 +207,8 @@
   :ensure t
   :hook ((cider-mode . company-mode)
          (emacs-lisp-mode . company-mode)
-         (lisp-mode . company-mode)))
+         (sly-mode . company-mode)))
 
-(use-package slime-company
-  :ensure t
-  :config
-  (setq slime-company-completion 'fuzzy
-        slime-company-after-completion 'slime-company-just-one-space)
-  (add-to-list 'slime-contribs 'slime-company))
 
 (use-package paredit
   :ensure t
@@ -255,6 +246,11 @@
   :hook (python-mode . (lambda ()
                          (require 'lsp-pyright)
                          (lsp-deferred))))
+
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable))
 
 (use-package vscode-dark-plus-theme
   :ensure t
