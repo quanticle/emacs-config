@@ -156,6 +156,29 @@
 (use-package flyspell-correct-ivy
   :ensure t)
 
+(use-package sly
+  :ensure t
+  :custom-face
+  (sly-mrepl-output-face ((t (:foreground "SeaGreen")))))
+
+(use-package cider
+  :ensure t
+  :config
+  (add-hook 'clojure-mode-hook 'cider-mode))
+
+(use-package clj-refactor
+  :ensure t
+  :after (cider)
+  :hook (clojure-mode . (lambda ()
+                          (clj-refactor-mode 1)
+                          (cljr-add-keybindings-with-prefix "C-c C-m"))))
+
+(use-package company
+  :ensure t
+  :hook ((cider-mode . company-mode)
+         (emacs-lisp-mode . company-mode)
+         (sly-mode . company-mode)))
+
 (use-package org
   :ensure t
   :bind (:map org-mode-map
@@ -185,30 +208,6 @@
   :ensure t
   :config
   (setq vc-handled-backends nil))
-
-(use-package sly
-  :ensure t
-  :custom-face
-  (sly-mrepl-output-face ((t (:foreground "SeaGreen")))))
-
-(use-package cider
-  :ensure t
-  :config
-  (add-hook 'clojure-mode-hook 'cider-mode))
-
-(use-package clj-refactor
-  :ensure t
-  :after (cider)
-  :hook (clojure-mode . (lambda ()
-                          (clj-refactor-mode 1)
-                          (cljr-add-keybindings-with-prefix "C-c C-m"))))
-
-(use-package company
-  :ensure t
-  :hook ((cider-mode . company-mode)
-         (emacs-lisp-mode . company-mode)
-         (sly-mode . company-mode)))
-
 
 (use-package paredit
   :ensure t
