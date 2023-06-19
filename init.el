@@ -200,6 +200,7 @@
   (setq org-yank-folded-subtrees nil)
   (setq org-export-with-toc nil)
   (setq org-image-actual-width '(512))
+  (setq org-blank-before-new-entry '((heading . auto) (plain-list-item . nil)))
   :hook (org-mode . (lambda ()
                       (electric-indent-mode -1)
                       (turn-on-flyspell))))
