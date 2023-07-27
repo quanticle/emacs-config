@@ -113,6 +113,9 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
+;; Don't include text properties when yanking
+(setq yank-excluded-properties t)
+
 ;; Initialize the package manager
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
