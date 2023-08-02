@@ -77,7 +77,7 @@
 (run-with-idle-timer 300 t 'garbage-collect)
 
 ;;; Don't show the warnings buffer unless there's an actual error
-(setq display-warning-minimum-level :error)
+(setq warning-minimum-level :error)
 
 
 ;; Set Javascript indentation to two spaces
