@@ -206,7 +206,9 @@
   (setq org-blank-before-new-entry '((heading . auto) (plain-list-item . nil)))
   :hook (org-mode . (lambda ()
                       (electric-indent-mode -1)
-                      (turn-on-flyspell))))
+                      (turn-on-flyspell)
+                      (make-local-variable 'search-invisible)
+                      (setq search-invisible nil))))
 
 (use-package magit
   :ensure t
