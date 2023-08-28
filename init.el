@@ -116,6 +116,18 @@
 ;; Don't include text properties when yanking
 (setq yank-excluded-properties t)
 
+;; Add org-mode source blocks, example blocks and LaTeX fragment delimiters to
+;; the list of excluded regions for ispell, in order to limit the number of
+;; false positives
+
+(add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_SRC" . "#\\+END_SRC")) ; Code blocks
+(add-to-list 'ispell-skip-region-alist '("[[:space:]]=[[:graph:]]" . "[[:graph:]]=[[:space:]]")) ; Code fragments
+(add-to-list 'ispell-skip-region-alist '("https?" . "[[:space:]]")) ; URLs
+(add-to-list 'ispell-skip-region-alist '("\\\\(" . "\\\\)")) ; LaTeX fragments
+(add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXAMPLE" . "#\\+END_EXAMPLE")) ; Example blocks
+(add-to-list 'ispell-skip-region-alist '("#\\+OPTIONS" . "\n")) ; Options config
+(add-to-list 'ispell-skip-region-alist '("#\\+HTML_HEAD" . "\n")) ; HTML config
+
 ;; Initialize the package manager
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -149,15 +161,6 @@
   :after (projectile)
   :config
   (counsel-projectile-mode 1))
-
-(use-package flyspell-correct
-  :ensure t
-  :bind (:map flyspell-mode-map
-              ("C-;" . flyspell-correct-wrapper)
-              ("C-c $" . flyspell-correct-at-point)))
-
-(use-package flyspell-correct-ivy
-  :ensure t)
 
 (use-package sly
   :ensure t
@@ -206,7 +209,6 @@
   (setq org-blank-before-new-entry '((heading . auto) (plain-list-item . nil)))
   :hook (org-mode . (lambda ()
                       (electric-indent-mode -1)
-                      (turn-on-flyspell)
                       (make-local-variable 'search-invisible)
                       (setq search-invisible nil))))
 
