@@ -121,7 +121,7 @@
 ;; false positives
 
 (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_SRC" . "#\\+END_SRC")) ; Code blocks
-(add-to-list 'ispell-skip-region-alist '("[[:space:]]=[[:graph:]]" . "[[:graph:]]=[[:space:]]")) ; Code fragments
+(add-to-list 'ispell-skip-region-alist '("[[:space:](]=[[:graph:]]" . "[[:graph:]]=[[:space:],.)]")) ; Code fragments
 (add-to-list 'ispell-skip-region-alist '("https?" . "[[:space:]]")) ; URLs
 (add-to-list 'ispell-skip-region-alist '("\\\\(" . "\\\\)")) ; LaTeX fragments
 (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXAMPLE" . "#\\+END_EXAMPLE")) ; Example blocks
