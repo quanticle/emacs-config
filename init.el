@@ -170,8 +170,43 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 
 ;; Packages
 
+
 (use-package request
   :ensure t)
+
+(use-package org
+  :load-path "/home/quanticle/emacs-org/lisp/"
+  :ensure t
+  :init
+  (setq org-export-backends '(ascii html md latex odt))
+  :bind (:map org-mode-map
+         ("C-c >" . org-metaright)
+         ("C-c <" . org-metaleft)
+         ("C-c v" . org-metadown)
+         ("C-c M-v" . org-metaup)
+         ("C-c ," . org-insert-structure-template)
+         ("<insert>" . org-insert-structure-template)
+         ("C-c C-'" . org-edit-special))
+        (:map org-src-mode-map
+         ("C-c C-'" . org-edit-src-exit))
+  :config
+  (setq org-startup-truncated nil)
+  (setq org-startup-indented nil)
+  (setq org-startup-folded nil)
+  (setq org-startup-export-with-toc nil)
+  (setq org-adapt-indentation nil)
+  (setq org-yank-folded-subtrees nil)
+  (setq org-export-with-toc nil)
+  (setq org-image-actual-width '(512))
+  (setq org-blank-before-new-entry '((heading . auto) (plain-list-item . nil)))
+  (setq org-md-toplevel-hlevel 2)
+  (setq org-fontify-todo-headline t)
+  (setq org-fontify-done-headline t)
+  (setq-default org-clock-mode-line-total 'current)
+  :hook (org-mode . (lambda ()
+                      (electric-indent-mode -1)
+                      (make-local-variable 'search-invisible)
+                      (setq search-invisible nil))))
 
 (use-package ivy
   :ensure t
@@ -217,37 +252,6 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   :hook ((cider-mode . company-mode)
          (emacs-lisp-mode . company-mode)
          (sly-mode . company-mode)))
-
-(use-package org
-  :ensure t
-  :bind (:map org-mode-map
-         ("C-c >" . org-metaright)
-         ("C-c <" . org-metaleft)
-         ("C-c v" . org-metadown)
-         ("C-c M-v" . org-metaup)
-         ("C-c ," . org-insert-structure-template)
-         ("<insert>" . org-insert-structure-template)
-         ("C-c C-'" . org-edit-special)
-         ("C-c C-k" . nil))
-        (:map org-src-mode-map
-         ("C-c C-'" . org-edit-src-exit))
-  :config
-  (setq org-startup-truncated nil)
-  (setq org-startup-indented nil)
-  (setq org-startup-folded nil)
-  (setq org-startup-export-with-toc nil)
-  (setq org-adapt-indentation nil)
-  (setq org-yank-folded-subtrees nil)
-  (setq org-export-with-toc nil)
-  (setq org-image-actual-width '(512))
-  (setq org-blank-before-new-entry '((heading . auto) (plain-list-item . nil)))
-  (setq org-fontify-todo-headline t)
-  (setq org-fontify-done-headline t)
-  (setq-default org-clock-mode-line-total 'current)
-  :hook (org-mode . (lambda ()
-                      (electric-indent-mode -1)
-                      (make-local-variable 'search-invisible)
-                      (setq search-invisible nil))))
 
 (use-package paredit
   :ensure t
