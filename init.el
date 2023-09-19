@@ -216,6 +216,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
                                      :publishing-directory "/home/quanticle/website_publish/"
                                      :recursive t
                                      :html-head-include-default-style nil
+                                     :html-postamble nil
                                      :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"/website_style.css\"/>")
                                     ("website_images"
                                      :base-directory "/home/quanticle/website/images/"
