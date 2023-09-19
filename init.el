@@ -185,6 +185,24 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (setq org-image-actual-width '(512))
   (setq org-blank-before-new-entry '((heading . auto) (plain-list-item . nil)))
   (setq org-md-toplevel-hlevel 2)
+  (setq org-publish-project-alist '(("website_orgfiles" 
+                                     :base-directory "/home/quanticle/website/"
+                                     :publishing-directory "/home/quanticle/website_publish/"
+                                     :recursive t
+                                     :html-head-include-default-style nil
+                                     :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"/website_style.css\"/>")
+                                    ("website_images"
+                                     :base-directory "/home/quanticle/website/images/"
+                                     :publishing-directory "/home/quanticle/website_publish/images/"
+                                     :recursive t
+                                     :base-extension "png\\|jpg\\|gif"
+                                     :publishing-function org-publish-attachment)
+                                    ("website_css"
+                                     :base-directory "/home/quanticle/website/"
+                                     :publishing-directory "/home/quanticle/website_publish/"
+                                     :base-extension "css"
+                                     :publishing-function org-publish-attachment)
+                                    ("website" :components ("website_orgfiles" "website_images" "website_css"))))
   :hook (org-mode . (lambda ()
                       (electric-indent-mode -1)
                       (make-local-variable 'search-invisible)
@@ -277,3 +295,5 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   :ensure t
   :config
   (load-theme 'vscode-dark-plus t))
+
+(setq safe-local-variable-values '((epa-file-encrypt-to . quanticle@quanticle.net)))
