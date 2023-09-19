@@ -211,6 +211,24 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (setq org-fontify-todo-headline t)
   (setq org-fontify-done-headline t)
   (setq-default org-clock-mode-line-total 'current)
+  (setq org-publish-project-alist '(("website_orgfiles" 
+                                     :base-directory "/home/quanticle/website/"
+                                     :publishing-directory "/home/quanticle/website_publish/"
+                                     :recursive t
+                                     :html-head-include-default-style nil
+                                     :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"/website_style.css\"/>")
+                                    ("website_images"
+                                     :base-directory "/home/quanticle/website/images/"
+                                     :publishing-directory "/home/quanticle/website_publish/images/"
+                                     :recursive t
+                                     :base-extension "png\\|jpg\\|gif"
+                                     :publishing-function org-publish-attachment)
+                                    ("website_css"
+                                     :base-directory "/home/quanticle/website/"
+                                     :publishing-directory "/home/quanticle/website_publish/"
+                                     :base-extension "css"
+                                     :publishing-function org-publish-attachment)
+                                    ("website" :components ("website_orgfiles" "website_images" "website_css"))))
   :hook (org-mode . (lambda ()
                       (electric-indent-mode -1)
                       (make-local-variable 'search-invisible)
@@ -359,3 +377,5 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (set-face-attribute 'org-level-1 nil :height 'unspecified))
 
 (server-start)
+(setq safe-local-variable-values '((epa-file-encrypt-to . quanticle@quanticle.net)))
+
