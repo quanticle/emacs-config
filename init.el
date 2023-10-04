@@ -215,8 +215,13 @@ name to the default value specified by FRAME-TITLE-FORMAT."
                                      :base-directory "/home/quanticle/website/"
                                      :publishing-directory "/home/quanticle/website_publish/"
                                      :recursive t
+                                     :headline-levels 6
+                                     :section-numbers nil
                                      :html-head-include-default-style nil
-                                     :html-postamble nil
+                                     :html-postamble (lambda (options)
+                                                       (if (string-match "index\\.org" (buffer-file-name))
+                                                           ""
+                                                         "<footer><p><a href=\"/\">Home</a></footer>"))
                                      :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"/website_style.css\"/>")
                                     ("website_images"
                                      :base-directory "/home/quanticle/website/images/"
