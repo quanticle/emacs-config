@@ -127,6 +127,7 @@
 (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXAMPLE" . "#\\+END_EXAMPLE")) ; Example blocks
 (add-to-list 'ispell-skip-region-alist '("#\\+OPTIONS" . "\n")) ; Options config
 (add-to-list 'ispell-skip-region-alist '("#\\+HTML_HEAD" . "\n")) ; HTML config
+(add-to-list 'ispell-skip-region-alist '("-\\*-" . "-\\*-")) ; Emacs per-file options
 
 ;; Initialize the package manager
 (require 'package)
