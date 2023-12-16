@@ -129,6 +129,10 @@
 (add-to-list 'ispell-skip-region-alist '("#\\+HTML_HEAD" . "\n")) ; HTML config
 (add-to-list 'ispell-skip-region-alist '("-\\*-" . "-\\*-")) ; Emacs per-file options
 
+;; Map <f5> to quick-revert-buffer
+
+(global-set-key (kbd "<f5>") 'revert-buffer-quick)
+
 ;; Initialize the package manager
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -235,13 +239,6 @@
   :config
   (add-hook 'js-mode-hook #'lsp))
 
-
-(use-package ace-window
-  :ensure t
-  :config
-  (global-set-key (kbd "C-x o") 'ace-window)
-  (global-set-key (kbd "M-o") 'ace-window))
-
 (use-package csv-mode
   :ensure t)
 
@@ -260,6 +257,9 @@
   :ensure t
   :init
   (elpy-enable))
+
+(use-package elpher
+  :ensure t)
 
 (use-package vscode-dark-plus-theme
   :ensure t
