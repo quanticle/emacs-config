@@ -196,7 +196,8 @@ name to the default value specified by FRAME-TITLE-FORMAT."
          ("<insert>" . org-insert-structure-template)
          ("C-c C-'" . org-edit-special))
         (:map org-src-mode-map
-         ("C-c C-'" . org-edit-src-exit))
+         ("C-c C-'" . org-edit-src-exit)
+         ("C-c k" . org-edit-src-abort))
   :config
   (setq org-startup-truncated nil)
   (setq org-startup-indented nil)
@@ -239,6 +240,9 @@ name to the default value specified by FRAME-TITLE-FORMAT."
                       (electric-indent-mode -1)
                       (make-local-variable 'search-invisible)
                       (setq search-invisible nil))))
+
+(use-package ox-gemini
+  :ensure t)
 
 (use-package ivy
   :ensure t
