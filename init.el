@@ -133,6 +133,9 @@
 
 (global-set-key (kbd "<f5>") 'revert-buffer-quick)
 
+;; Disable emacs version control
+(setq vc-handled-backends nil)
+
 ;; Initialize the package manager
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -217,11 +220,6 @@
                       (electric-indent-mode -1)
                       (make-local-variable 'search-invisible)
                       (setq search-invisible nil))))
-
-(use-package magit
-  :ensure t
-  :config
-  (setq vc-handled-backends nil))
 
 (use-package paredit
   :ensure t
