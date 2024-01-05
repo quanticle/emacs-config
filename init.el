@@ -100,7 +100,7 @@
                                       (save-buffers-kill-terminal))))
 
 ;; Just save everything without asking
-(global-set-key (kbd "C-x s") (lambda () (save-some-buffers t)))
+(global-set-key (kbd "C-x s") (lambda () (interactive) (save-some-buffers t)))
 
 ;; I don't double-space after periods
 (setq sentence-end-double-space nil)
