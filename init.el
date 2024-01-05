@@ -99,6 +99,9 @@
                                   (if (y-or-n-p "Really quit?")
                                       (save-buffers-kill-terminal))))
 
+;; Just save everything without asking
+(global-set-key (kbd "C-x s") (lambda () (save-some-buffers t)))
+
 ;; I don't double-space after periods
 (setq sentence-end-double-space nil)
 
