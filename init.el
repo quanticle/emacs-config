@@ -107,10 +107,15 @@
 
 ;; Command to allow me to rename frames
 (defun rename-frame ()
+  "Command to allow the user to rename frames. Prompts the user for a new frame
+name. If the user passes 'default as the new frame name, this command resets the
+name to the default value specified by FRAME-TITLE-FORMAT."
   (interactive)
   (let ((current-frame (selected-frame))
         (new-frame-name (read-string "New frame name: ")))
-    (modify-frame-parameters current-frame (list (cons 'name new-frame-name)))))
+    (if (string-equal new-frame-name "'default")
+        (modify-frame-parameters current-frame (list (cons 'name nil)))
+      (modify-frame-parameters current-frame (list (cons 'name new-frame-name))))))
 
 ;; Enable upcase-region and downcase-region
 (put 'upcase-region 'disabled nil)
