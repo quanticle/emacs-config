@@ -151,9 +151,6 @@ name to the default value specified by FRAME-TITLE-FORMAT."
        (proto (if no-ssl "http" "https")))
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t))
 (package-initialize)
-(package-refresh-contents)
-(if (not (package-installed-p 'use-package))
-    (package-install 'use-package))
 
 ;; Packages
 (use-package ivy
