@@ -144,6 +144,12 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 ;; Disable emacs version control
 (setq vc-handled-backends nil)
 
+;; Make emacs always attempt to display the calendar in a buffer that's at the
+;; bottom of the frame and which spans the entire frame
+(add-to-list 'display-buffer-alist 
+             '("\\*Calendar\\*"
+               (display-buffer-at-bottom display-buffer-pop-up-window)))
+
 ;; Initialize the package manager
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
