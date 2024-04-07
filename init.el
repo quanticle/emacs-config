@@ -274,3 +274,5 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   :ensure t
   :config
   (load-theme 'vscode-dark-plus t))
+
+(server-start)
