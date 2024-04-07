@@ -236,6 +236,12 @@ name to the default value specified by FRAME-TITLE-FORMAT."
                                      :base-extension "css"
                                      :publishing-function org-publish-attachment)
                                     ("website" :components ("website_orgfiles" "website_images" "website_css"))))
+  (setq org-file-apps
+        '((auto-mode . emacs)
+         (directory . emacs)
+         ("\\.mm\\'" . default)
+         ("\\.x?html?\\'" . "firefox %s")
+         ("\\.pdf\\'" . "evince %s")))
   :hook (org-mode . (lambda ()
                       (electric-indent-mode -1)
                       (make-local-variable 'search-invisible)
