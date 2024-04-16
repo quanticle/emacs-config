@@ -237,6 +237,8 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (setq org-export-with-toc nil)
   (setq org-image-actual-width '(512))
   (setq org-blank-before-new-entry '((heading . auto) (plain-list-item . nil)))
+  (setq org-fontify-todo-headline t)
+  (setq org-fontify-done-headline t)
   :hook (org-mode . (lambda ()
                       (electric-indent-mode -1)
                       (make-local-variable 'search-invisible)
@@ -285,6 +287,8 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   :config
   (load-theme 'vscode-dark-plus t)
   (set-face-attribute 'org-todo nil :box 'unspecified)
-  (set-face-attribute 'org-done nil :box 'unspecified))
+  (set-face-attribute 'org-done nil :box 'unspecified)
+  (set-face-attribute 'org-headline-done nil :foreground "#d4d4d4" :strike-through t)
+  (set-face-attribute 'org-headline-todo nil :foreground "#d4d4d4"))
 
 (server-start)
