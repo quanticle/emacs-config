@@ -273,6 +273,8 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 (use-package vscode-dark-plus-theme
   :ensure t
   :config
-  (load-theme 'vscode-dark-plus t))
+  (load-theme 'vscode-dark-plus t)
+  (set-face-attribute 'org-todo nil :box 'unspecified)
+  (set-face-attribute 'org-done nil :box 'unspecified))
 
 (server-start)
