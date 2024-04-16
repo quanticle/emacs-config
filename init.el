@@ -150,6 +150,16 @@ name to the default value specified by FRAME-TITLE-FORMAT."
              '("\\*Calendar\\*"
                (display-buffer-at-bottom display-buffer-pop-up-window)))
 
+;; Display the time
+(setq display-time-format "%l:%M %p %Y-%m-%d")
+(setq display-time-string-forms
+      '(#1= ""
+            (propertize (format-time-string display-time-format now)
+                        'help-echo
+                        (format-time-string "%a %b %e, %Y" now))))
+(display-time-mode 1)
+
+
 ;; Initialize the package manager
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
