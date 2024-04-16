@@ -242,6 +242,8 @@ name to the default value specified by FRAME-TITLE-FORMAT."
          ("\\.mm\\'" . default)
          ("\\.x?html?\\'" . "firefox %s")
          ("\\.pdf\\'" . "evince %s")))
+  (setq org-fontify-todo-headline t)
+  (setq org-fontify-done-headline t)
   :hook (org-mode . (lambda ()
                       (electric-indent-mode -1)
                       (make-local-variable 'search-invisible)
