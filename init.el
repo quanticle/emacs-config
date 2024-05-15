@@ -284,6 +284,8 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (set-face-attribute 'org-todo nil :box 'unspecified)
   (set-face-attribute 'org-done nil :box 'unspecified)
   (set-face-attribute 'org-headline-done nil :foreground "#d4d4d4" :strike-through t)
-  (set-face-attribute 'org-headline-todo nil :foreground "#d4d4d4"))
+  (set-face-attribute 'org-headline-todo nil :foreground "#d4d4d4")
+  (set-face-attribute 'org-document-title nil :height 'unspecified)
+  (set-face-attribute 'org-level-1 nil :height 'unspecified))
 
 (server-start)
