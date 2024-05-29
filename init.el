@@ -234,6 +234,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (setq org-blank-before-new-entry '((heading . auto) (plain-list-item . nil)))
   (setq org-fontify-todo-headline t)
   (setq org-fontify-done-headline t)
+  (setq-default org-clock-mode-line-total 'current)
   :hook (org-mode . (lambda ()
                       (electric-indent-mode -1)
                       (make-local-variable 'search-invisible)
