@@ -278,6 +278,11 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 (use-package elpher
   :ensure t)
 
+(use-package xclip
+  :ensure t
+  :config
+  (xclip-mode 1))
+
 (use-package vscode-dark-plus-theme
   :ensure t
   :config
