@@ -249,6 +249,10 @@ name to the default value specified by FRAME-TITLE-FORMAT."
                       (make-local-variable 'search-invisible)
                       (setq search-invisible nil))))
 
+(use-package ox-rss
+  :ensure t
+  :after (org))
+
 (use-package ox-gemini
   :ensure t)
 
