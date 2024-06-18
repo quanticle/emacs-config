@@ -186,7 +186,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   :load-path "/home/quanticle/emacs-org/lisp/"
   :ensure t
   :init
-  (setq org-export-backends '(ascii html md latex odt))
+  (setq org-export-backends '(ascii html md latex odt icalendar))
   :bind (:map org-mode-map
          ("C-c >" . org-metaright)
          ("C-c <" . org-metaleft)
@@ -248,6 +248,10 @@ name to the default value specified by FRAME-TITLE-FORMAT."
                       (electric-indent-mode -1)
                       (make-local-variable 'search-invisible)
                       (setq search-invisible nil))))
+
+(use-package ox-rss
+  :ensure t
+  :after (org))
 
 (use-package ox-gemini
   :ensure t)
