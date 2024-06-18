@@ -159,6 +159,17 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t))
 (package-initialize)
 
+;; Display date and time in the modeline
+(setq display-time-format "%l:%M %p %Y-%m-%d")
+(setq display-time-string-forms
+      '(#1= ""
+            (propertize (format-time-string display-time-format now)
+                        'help-echo
+                        (format-time-string "%a %b %e, %Y" now))))
+(display-time-mode 1)
+
+
+
 ;; Packages
 
 
