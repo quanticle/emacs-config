@@ -160,7 +160,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 (package-initialize)
 
 ;; Display date and time in the modeline
-(setq display-time-format "%l:%M %p %Y-%m-%d")
+(setq display-time-format "%H:%M %Y-%m-%d")
 (setq display-time-string-forms
       '(#1= ""
             (propertize (format-time-string display-time-format now)
