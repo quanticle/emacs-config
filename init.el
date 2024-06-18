@@ -182,14 +182,6 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 (setq show-paren-predicate '(and (not (derived-mode . special-mode))
                                  (not (derived-mode . org-mode))))
 
-;; Display date and time in the modeline
-(setq display-time-format "%H:%M %Y-%m-%d")
-(setq display-time-string-forms
-      '(#1= ""
-            (propertize (format-time-string display-time-format now)
-                        'help-echo
-                        (format-time-string "%a %b %e, %Y" now))))
-(display-time-mode 1)
 
 ;; Packages
 
