@@ -219,6 +219,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (setq org-fontify-todo-headline t)
   (setq org-fontify-done-headline t)
   (setq-default org-clock-mode-line-total 'current)
+  (setq org-html-self-link-headlines t)
   (setq org-publish-project-alist '(("website_orgfiles"
                                      :base-directory "/home/quanticle/website/"
                                      :publishing-directory "/home/quanticle/website_publish/"
