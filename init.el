@@ -221,10 +221,6 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 (use-package org
   :ensure t
   :bind (:map org-mode-map
-         ("C-c >" . org-metaright)
-         ("C-c <" . org-metaleft)
-         ("C-c v" . org-metadown)
-         ("C-c M-v" . org-metaup)
          ("C-c ," . org-insert-structure-template)
          ("<insert>" . org-insert-structure-template)
          ("C-c C-'" . org-edit-special)
