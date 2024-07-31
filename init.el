@@ -292,6 +292,10 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   :config
   (xclip-mode 1))
 
+(use-package nix-mode
+  :ensure t
+  :mode "\\.nix\\'")
+
 (use-package vscode-dark-plus-theme
   :ensure t
   :config
