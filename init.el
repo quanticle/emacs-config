@@ -296,6 +296,9 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   :ensure t
   :mode "\\.nix\\'")
 
+(use-package magit
+  :ensure t)
+
 (use-package vscode-dark-plus-theme
   :ensure t
   :config
