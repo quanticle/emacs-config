@@ -195,10 +195,6 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   :init
   (setq org-export-backends '(ascii html md latex odt icalendar))
   :bind (:map org-mode-map
-         ("C-c >" . org-metaright)
-         ("C-c <" . org-metaleft)
-         ("C-c v" . org-metadown)
-         ("C-c M-v" . org-metaup)
          ("C-c ," . org-insert-structure-template)
          ("<insert>" . org-insert-structure-template)
          ("C-c C-'" . org-edit-special))
@@ -254,6 +250,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (setq org-fontify-done-headline t)
   :hook (org-mode . (lambda ()
                       (electric-indent-mode -1)
+                      (visual-line-mode 1)
                       (make-local-variable 'search-invisible)
                       (setq search-invisible nil))))
 
