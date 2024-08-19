@@ -247,14 +247,8 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   :hook (org-mode . (lambda ()
                       (electric-indent-mode -1)
                       (make-local-variable 'search-invisible)
+                      (visual-line-mode 1)
                       (setq search-invisible nil))))
-
-(use-package paredit
-  :ensure t
-  :config
-  (add-hook 'cider-mode-hook #'enable-paredit-mode)
-  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
-  (add-hook 'lisp-mode-hook #'enable-paredit-mode))
 
 (use-package lsp-mode
   :ensure t)
@@ -309,5 +303,17 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (set-face-attribute 'org-headline-todo nil :foreground "#d4d4d4")
   (set-face-attribute 'org-document-title nil :height 'unspecified)
   (set-face-attribute 'org-level-1 nil :height 'unspecified))
+
+(use-package evil
+  :ensure t
+  :init
+  (setq evil-respect-visual-line-mode t))
+
+(use-package evil-org
+  :ensure t
+  :after org
+  :hook (org-mode . (lambda () (evil-org-mode)))
+  :config
+  (evil-org-set-key-theme '(navigation insert textobjects additional calendar)))
 
 (server-start)
