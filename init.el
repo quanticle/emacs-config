@@ -230,7 +230,8 @@ name to the default value specified by FRAME-TITLE-FORMAT."
          ("C-c C-'" . org-edit-special)
          ("C-c C-k" . nil))
         (:map org-src-mode-map
-         ("C-c C-'" . org-edit-src-exit))
+         ("C-c C-'" . org-edit-src-exit)
+         ("C-c k" . org-edit-src-abort))
   :config
   (setq org-startup-truncated nil)
   (setq org-startup-indented nil)
