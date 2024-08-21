@@ -304,7 +304,8 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 (use-package evil
   :ensure t
   :init
-  (setq evil-respect-visual-line-mode t))
+  (setq evil-respect-visual-line-mode t)
+  (setq evil-cross-lines t))
 
 (use-package evil-org
   :ensure t
