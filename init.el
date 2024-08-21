@@ -201,7 +201,8 @@ name to the default value specified by FRAME-TITLE-FORMAT."
          ("C-c M-v" . org-metaup)
          ("C-c ," . org-insert-structure-template)
          ("<insert>" . org-insert-structure-template)
-         ("C-c C-'" . org-edit-special))
+         ("C-c C-'" . org-edit-special)
+         ("C-c C-k" . nil))
         (:map org-src-mode-map
          ("C-c C-'" . org-edit-src-exit)
          ("C-c k" . org-edit-src-abort))
