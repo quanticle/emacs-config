@@ -221,10 +221,6 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 (use-package org
   :ensure t
   :bind (:map org-mode-map
-         ("C-c >" . org-metaright)
-         ("C-c <" . org-metaleft)
-         ("C-c v" . org-metadown)
-         ("C-c M-v" . org-metaup)
          ("C-c ," . org-insert-structure-template)
          ("<insert>" . org-insert-structure-template)
          ("C-c C-'" . org-edit-special)
@@ -248,7 +244,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
                       (electric-indent-mode -1)
                       (make-local-variable 'search-invisible)
                       (visual-line-mode 1)
-                      (setq search-invisible nil))))
+                      (setq search-invisible t))))
 
 (use-package lsp-mode
   :ensure t)
