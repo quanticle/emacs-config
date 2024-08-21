@@ -221,6 +221,10 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 (use-package org
   :ensure t
   :bind (:map org-mode-map
+         ("C-c >" . org-metaright)
+         ("C-c <" . org-metaleft)
+         ("C-c v" . org-metadown)
+         ("C-c M-v" . org-metaup)
          ("C-c ," . org-insert-structure-template)
          ("<insert>" . org-insert-structure-template)
          ("C-c C-'" . org-edit-special)
@@ -245,6 +249,13 @@ name to the default value specified by FRAME-TITLE-FORMAT."
                       (make-local-variable 'search-invisible)
                       (visual-line-mode 1)
                       (setq search-invisible t))))
+
+(use-package paredit
+  :ensure t
+  :config
+  (add-hook 'cider-mode-hook #'enable-paredit-mode)
+  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+  (add-hook 'lisp-mode-hook #'enable-paredit-mode))
 
 (use-package lsp-mode
   :ensure t)
