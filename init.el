@@ -182,6 +182,10 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   :init
   (setq org-export-backends '(ascii html md latex odt icalendar))
   :bind (:map org-mode-map
+         ("C-c >" . org-metaright)
+         ("C-c <" . org-metaleft)
+         ("C-c v" . org-metadown)
+         ("C-c M-v" . org-metaup)
          ("C-c ," . org-insert-structure-template)
          ("<insert>" . org-insert-structure-template)
          ("C-c C-'" . org-edit-special))
@@ -237,7 +241,6 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (setq org-fontify-done-headline t)
   :hook (org-mode . (lambda ()
                       (electric-indent-mode -1)
-                      (visual-line-mode 1)
                       (make-local-variable 'search-invisible)
                       (setq search-invisible nil))))
 
@@ -292,38 +295,6 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   :hook ((cider-mode . company-mode)
          (emacs-lisp-mode . company-mode)
          (sly-mode . company-mode)))
-
-(use-package org
-  :ensure t
-  :bind (:map org-mode-map
-         ("C-c >" . org-metaright)
-         ("C-c <" . org-metaleft)
-         ("C-c v" . org-metadown)
-         ("C-c M-v" . org-metaup)
-         ("C-c ," . org-insert-structure-template)
-         ("<insert>" . org-insert-structure-template)
-         ("C-c C-'" . org-edit-special)
-         ("C-c C-k" . nil))
-        (:map org-src-mode-map
-         ("C-c C-'" . org-edit-src-exit)
-         ("C-c k" . org-edit-src-abort))
-  :config
-  (setq org-startup-truncated nil)
-  (setq org-startup-indented nil)
-  (setq org-startup-folded nil)
-  (setq org-startup-export-with-toc nil)
-  (setq org-adapt-indentation nil)
-  (setq org-yank-folded-subtrees nil)
-  (setq org-export-with-toc nil)
-  (setq org-image-actual-width '(512))
-  (setq org-blank-before-new-entry '((heading . auto) (plain-list-item . nil)))
-  (setq org-fontify-todo-headline t)
-  (setq org-fontify-done-headline t)
-  (setq-default org-clock-mode-line-total 'current)
-  :hook (org-mode . (lambda ()
-                      (electric-indent-mode -1)
-                      (make-local-variable 'search-invisible)
-                      (setq search-invisible t))))
 
 (use-package paredit
   :ensure t
