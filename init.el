@@ -297,22 +297,4 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (set-face-attribute 'org-document-title nil :height 'unspecified)
   (set-face-attribute 'org-level-1 nil :height 'unspecified))
 
-(use-package evil
-  :ensure t
-  :init
-  (setq evil-respect-visual-line-mode t)
-  (setq evil-cross-lines t))
-
-(use-package evil-collection
-  :ensure t)
-
-(use-package evil-org
-  :ensure t
-  :after org
-  :hook (org-mode . (lambda () (evil-org-mode)))
-  :config
-  (evil-org-set-key-theme '(navigation insert textobjects additional calendar)))
-
-(evil-mode 1)
-(evil-collection-init)
 (server-start)
