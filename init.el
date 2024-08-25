@@ -262,7 +262,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   :hook (org-mode . (lambda ()
                       (electric-indent-mode -1)
                       (make-local-variable 'search-invisible)
-                      (setq search-invisible nil))))
+                      (setq search-invisible t))))
 
 (use-package ox-rss
   :ensure t
