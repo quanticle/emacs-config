@@ -248,7 +248,6 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   :hook (org-mode . (lambda ()
                       (electric-indent-mode -1)
                       (make-local-variable 'search-invisible)
-                      (visual-line-mode 1)
                       (setq search-invisible t))))
 
 (use-package paredit
