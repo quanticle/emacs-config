@@ -221,6 +221,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (setq org-fontify-done-headline t)
   (setq-default org-clock-mode-line-total 'current)
   (setq org-html-self-link-headlines t)
+  (setq org-export-with-author nil)
   (setq org-publish-project-alist '(("website_orgfiles"
                                      :base-directory "/home/quanticle/website/"
                                      :publishing-directory "/home/quanticle/website_publish/"
@@ -244,7 +245,19 @@ name to the default value specified by FRAME-TITLE-FORMAT."
                                      :publishing-directory "/home/quanticle/website_publish/"
                                      :base-extension "css"
                                      :publishing-function org-publish-attachment)
-                                    ("website" :components ("website_orgfiles" "website_images" "website_css"))))
+                                    ("website_rss"
+                                     :base-directory "/home/quanticle/website/"
+                                     :publishing-directory "/home/quanticle/website_publish/"
+                                     :base-extension "org"
+                                     :html-link-home "https://quanticle.net/"
+                                     :html-link-use-abs-url t
+                                     :rss-extension "xml"
+                                     :publishing-function (org-rss-publish-to-rss)
+                                     :section-numbers nil
+                                     :exclude ".*"
+                                     :include ("interesting_links.org")
+                                     :table-of-contents nil)
+                                    ("website" :components ("website_orgfiles" "website_images" "website_css" "website_rss"))))
   (setq org-file-apps
         '((auto-mode . emacs)
          (directory . emacs)
@@ -266,7 +279,9 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 
 (use-package ox-rss
   :ensure t
-  :after (org))
+  :after (org)
+  :config
+  (setq org-rss-use-entry-url-as-guid nil))
 
 (use-package ox-gemini
   :ensure t)
