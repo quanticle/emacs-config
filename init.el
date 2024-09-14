@@ -163,6 +163,9 @@ name to the default value specified by FRAME-TITLE-FORMAT."
              '("\\*Calendar\\*"
                (display-buffer-at-bottom display-buffer-pop-up-window)))
 
+;; Don't copy line numbers when copying entries out of calc
+(setq calc-kill-line-numbering nil)
+
 
 ;; Initialize the package manager
 (require 'package)
@@ -178,6 +181,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 
 (setq show-paren-predicate '(and (not (derived-mode . special-mode))
                                  (not (derived-mode . org-mode))))
+
 
 
 ;; Packages
@@ -218,7 +222,14 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (setq org-fontify-done-headline t)
   (setq-default org-clock-mode-line-total 'current)
   (setq org-html-self-link-headlines t)
+  (setq org-html-doctype "html5")
   (setq org-export-with-author nil)
+  (setq org-html-text-markup-alist '((bold . "<b>%s</b>")
+                                     (code . "<code>%s</code>")
+                                     (italic . "<i>%s</i>")
+                                     (strike-through . "<del>%s</del>")
+                                     (underline . "<u>%s</u>")
+                                     (verbatim . "<pre>%s</pre>")))
   (setq org-publish-project-alist '(("website_orgfiles"
                                      :base-directory "/home/quanticle/website/"
                                      :publishing-directory "/home/quanticle/website_publish/"
