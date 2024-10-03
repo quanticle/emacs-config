@@ -229,7 +229,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
                                      (italic . "<i>%s</i>")
                                      (strike-through . "<del>%s</del>")
                                      (underline . "<u>%s</u>")
-                                     (verbatim . "<pre>%s</pre>")))
+                                     (verbatim . "<code>%s</code>")))
   (setq org-publish-project-alist '(("website_orgfiles"
                                      :base-directory "/home/quanticle/website/"
                                      :publishing-directory "/home/quanticle/website_publish/"
