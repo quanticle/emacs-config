@@ -135,6 +135,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXAMPLE" . "#\\+END_EXAMPLE")) ; Example blocks
 (add-to-list 'ispell-skip-region-alist '("#\\+OPTIONS" . "\n")) ; Options config
 (add-to-list 'ispell-skip-region-alist '("#\\+HTML_HEAD" . "\n")) ; HTML config
+(add-to-list 'ispell-skip-region-alist '(":PROPERTIES:" . ":END:")) ; Property drawers
 (add-to-list 'ispell-skip-region-alist '("-\\*-" . "-\\*-")) ; Emacs per-file options
 
 ;; Map <f5> to quick-revert-buffer so that it works like <f5> in a browser
