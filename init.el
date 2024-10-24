@@ -47,6 +47,13 @@
 ;;; Always show matching parens
 (show-paren-mode 1)
 
+;; Disable show-paren-mode in org-mode buffers, because org-mode buffers will
+;; often use > or < as less than or greater than, but show-paren treats them as
+;; parentheses, and then show spurious errors when they don't match
+
+(setq show-paren-predicate '(and (not (derived-mode . special-mode))
+                                 (not (derived-mode . org-mode))))
+
 ;;; Show column number as well as line number in the mode line
 (column-number-mode 1)
 
@@ -159,14 +166,6 @@ name to the default value specified by FRAME-TITLE-FORMAT."
        (proto (if no-ssl "http" "https")))
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t))
 (package-initialize)
-
-;; Disable show-paren-mode in org-mode buffers, because org-mode buffers will 
-;; often use > or < as less than or greater than, but show-paren treats them as
-;; parentheses, and then show spurious errors when they don't match
-
-(setq show-paren-predicate '(and (not (derived-mode . special-mode))
-                                 (not (derived-mode . org-mode))))
-
 
 
 ;; Packages
