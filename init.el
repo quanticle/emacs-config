@@ -175,14 +175,6 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t))
 (package-initialize)
 
-;; Disable show-paren-mode in org-mode buffers, because org-mode buffers will 
-;; often use > or < as less than or greater than, but show-paren treats them as
-;; parentheses, and then show spurious errors when they don't match
-
-(setq show-paren-predicate '(and (not (derived-mode . special-mode))
-                                 (not (derived-mode . org-mode))))
-
-
 
 ;; Packages
 
