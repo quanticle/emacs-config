@@ -191,6 +191,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   :after (ivy)
   :config
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
   (setq projectile-enable-caching t)
   (projectile-mode 1))
 
