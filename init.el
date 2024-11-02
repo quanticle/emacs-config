@@ -106,6 +106,11 @@
                                   (if (y-or-n-p "Really quit?")
                                       (save-buffers-kill-terminal))))
 
+;; Bind M-c to execute extended command, because I hit M-c a lot when I mean to
+;; hit M-x
+
+(global-set-key (kbd "M-c") #'execute-extended-command)
+
 ;; Just save everything without asking
 (global-set-key (kbd "C-x s") (lambda () (interactive) (save-some-buffers t)))
 
