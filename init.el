@@ -390,6 +390,17 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (set-face-attribute 'org-document-title nil :height 'unspecified)
   (set-face-attribute 'org-level-1 nil :height 'unspecified))
 
+;; End of packages section
+
+;; Start the server
 (server-start)
+
+;; Make encryption a bit nicer by whitelisting my e-mail for public key encryption
 (setq safe-local-variable-values '((epa-file-encrypt-to . quanticle@quanticle.net)))
+
+;; Startup files
+(find-file "~/todo/habits.org")
+(find-file "~/todo/todo.org")
+(dired "~/notebook/")
+(switch-to-buffer "*scratch*")
 
