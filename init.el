@@ -263,7 +263,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
          (directory . emacs)
          ("\\.mm\\'" . default)
          ("\\.x?html?\\'" . "firefox %s")
-         ("\\.pdf\\'" . "evince %s")))
+         ("\\.pdf\\'" . "firefox %s")))
   (setq org-fontify-todo-headline t)
   (setq org-fontify-done-headline t)
   (defun clear-org-mark-ring ()
