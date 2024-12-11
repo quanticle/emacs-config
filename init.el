@@ -398,9 +398,8 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 ;; Make encryption a bit nicer by whitelisting my e-mail for public key encryption
 (setq safe-local-variable-values '((epa-file-encrypt-to . quanticle@quanticle.net)))
 
-;; Startup files
-(find-file "~/todo/habits.org")
-(find-file "~/todo/todo.org")
+;; Open my notebook and website projects by default
 (dired "~/notebook/")
+(dired "~/website/")
 (switch-to-buffer "*scratch*")
 
