@@ -401,7 +401,6 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 ;; Open notebook, website, habits, and to-do list by default
 (dired "~/notebook/")
 (dired "~/website/")
-(find-file "~/todo.org")
-(find-file "~/habits.org")
+(find-file "~/todo/todo.org")
 (switch-to-buffer "*scratch*")
 
