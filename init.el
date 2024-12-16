@@ -21,6 +21,7 @@
 (set-face-attribute 'default nil :font "Cascadia Code PL-12")
 ;;; This needs to be set to make inline code in org-mode not look awful
 (set-face-attribute 'fixed-pitch nil :family 'unspecified)
+(set-face-attribute 'fixed-pitch-serif nil :family 'unspecified)
 
 ;;; Make scrolling smooth
 (setq scroll-conservatively 9999)
