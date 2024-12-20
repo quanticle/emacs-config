@@ -168,7 +168,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 (setq calc-kill-line-numbering nil)
 
 ;; Enable displaying the time in the mode line
-(setq display-time-format "[%I:%M %p  %Y-%m-%d]")
+(setq display-time-format "[%I:%M %p %a %Y-%m-%d]")
 (setq display-time-string-forms
       '(#1= ""
             (propertize (format-time-string display-time-format now)
