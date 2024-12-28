@@ -77,11 +77,9 @@
 (require 'dired-x)
 (setq dired-clean-up-buffers-too t)
 
-;;; Computers have lots of RAM these days, so emacs should be more relaxed about
-;;; garbage collection. This sets the GC to run when either 1. 8GB of lisp
-;;; objects have been allocated since the last GC or 2. emacs has been idle for
-;;; five minutes.
-(setq gc-cons-threshold 8589934592)
+;;; My server is somewhat restricted on RAM, so set the GC cons threshold much
+;;; lower
+(setq gc-cons-threshold 500000)
 (run-with-idle-timer 300 t 'garbage-collect)
 
 ;;; Don't show the warnings buffer unless there's an actual error
