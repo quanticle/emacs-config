@@ -167,6 +167,14 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 ;; Don't copy line numbers when copying entries out of calc
 (setq calc-kill-line-numbering nil)
 
+;; Enable displaying the time in the mode line
+(setq display-time-format "[%I:%M %p %a %Y-%m-%d]")
+(setq display-time-string-forms
+      '(#1= ""
+            (propertize (format-time-string display-time-format now)
+                        'help-echo
+                        (format-time-string "%a %b %e %Y" now))))
+(display-time-mode 1)
 
 ;; Initialize the package manager
 (require 'package)
