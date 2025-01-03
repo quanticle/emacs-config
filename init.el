@@ -183,6 +183,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
                                  (not (derived-mode . org-mode))))
 
 
+
 ;; Packages
 
 
@@ -221,7 +222,14 @@ name to the default value specified by FRAME-TITLE-FORMAT."
   (setq org-fontify-done-headline t)
   (setq-default org-clock-mode-line-total 'current)
   (setq org-html-self-link-headlines t)
+  (setq org-html-doctype "html5")
   (setq org-export-with-author nil)
+  (setq org-html-text-markup-alist '((bold . "<b>%s</b>")
+                                     (code . "<code>%s</code>")
+                                     (italic . "<i>%s</i>")
+                                     (strike-through . "<del>%s</del>")
+                                     (underline . "<u>%s</u>")
+                                     (verbatim . "<pre>%s</pre>")))
   (setq org-publish-project-alist '(("website_orgfiles"
                                      :base-directory "/home/quanticle/website/"
                                      :publishing-directory "/home/quanticle/website_publish/"
