@@ -402,6 +402,7 @@ name to the default value specified by FRAME-TITLE-FORMAT."
 (dired "~/notebook/")
 (dired "~/website/")
 (find-file "~/todo/todo.org")
+(find-file "~/todo/done.org")
 (find-file "~/todo/habits.org")
 (switch-to-buffer "*scratch*")
 
